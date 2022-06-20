@@ -10,9 +10,10 @@ import { PagesRoutingModule } from './pages-routing.module';
 // Components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DriversComponent } from './drivers/drivers.component';
+import { AddDriverComponent } from './drivers/add-driver/add-driver.component';
 
 @NgModule({
-  declarations: [DashboardComponent, DriversComponent],
+  declarations: [DashboardComponent, DriversComponent, AddDriverComponent],
   imports: [CommonModule, PagesRoutingModule, MaterialModule],
 })
 export class PagesModule {}

@@ -1,5 +1,8 @@
 <section class="main-container">
-  <h3 class="main-title">List of Drivers</h3>
+  <div class="flex-container">
+    <h3 class="main-title">List of Drivers</h3>
+    <button (click)="addNewDriver()" class="cta-add">Add new driver</button>
+  </div>
 
   <table
     mat-table
@@ -19,6 +22,11 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      (click)="redirectToDriver(row)"
+      [class.row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
   </table>
 </section>

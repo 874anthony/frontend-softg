@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>
+  <span> Add a new driver </span>
+</h2>
+
+<form>
+  <mat-dialog-content>
+    <div class="input-box">
+      <h3 class="input-box__title">Driver Information</h3>
+
+      <div class="user-input-wrap">
+        <input formControlName="strength" type="text" required />
+        <label class="floating-placeholder"> Strength </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="quantity" type="text" required />
+        <label class="floating-placeholder"> Quantity </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="partialAddQuantity" type="text" required />
+        <label class="floating-placeholder"> Add Quantity </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="partialRemoveQuantity" type="text" required />
+        <label class="floating-placeholder"> Remove Quantity </label>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary">Save</button>
+  </mat-dialog-actions>
+</form>

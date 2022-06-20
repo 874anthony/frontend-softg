@@ -1,0 +1,25 @@
+@import "../../../../scss/variables";
+@import "../../../../scss/mixins";
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xm; //2.4 rem
+
+  @include custom-input;
+
+  // Overriding mat-dialog-h3
+  &__title {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: $font-x-medium !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+  }
+
+  .user-input-wrap:first-child {
+    margin-top: 0.7rem;
+  }
+}
+
+@include custom-toggle;

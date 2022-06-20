@@ -1,0 +1,258 @@
+@mixin custom-input {
+  .user-input-wrap {
+    position: relative;
+
+    &.input-flex {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+
+  .user-input-wrap .floating-placeholder {
+    pointer-events: none;
+    position: absolute;
+    top: 1.4rem;
+    left: 1rem;
+    color: #868e96;
+    font-size: $font-small;
+    font-weight: 500;
+    transition: 0.2s ease all;
+  }
+
+  .user-input-wrap input:not(:focus):valid ~ .floating-placeholder,
+  .user-input-wrap input:focus ~ .floating-placeholder,
+  .user-input-wrap textarea:not(:focus):valid ~ .floating-placeholder,
+  .user-input-wrap textarea:focus ~ .floating-placeholder {
+    top: -1.1rem;
+    left: 1rem;
+    font-size: $font-x-small;
+  }
+
+  input[type="date"],
+  input[type="text"],
+  input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #adb5bd;
+    font-size: $font-x-medium;
+    color: #343a40;
+    font-weight: 500;
+    padding: $space-s;
+    background-color: #f8f9fa;
+    width: 100%;
+  }
+
+  textarea {
+    border: none;
+    border-bottom: 1px solid #adb5bd;
+    font-size: $font-x-medium;
+    color: #343a40;
+    font-weight: 500;
+    padding: $space-s;
+    background-color: #f8f9fa;
+    width: 100%;
+    resize: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="date"]:focus,
+  input[type="password"]:focus,
+  textarea:focus {
+    outline: none;
+    border-bottom: 1px solid #012a46;
+  }
+}
+
+@mixin custom-select {
+  .custom-select {
+    position: relative;
+    height: 100%;
+
+    select {
+      border: none;
+      box-shadow: 0 1px 0 #adb5bd;
+      font-size: $font-small;
+      color: #343a40;
+      font-weight: 500;
+      padding: $space-s $space-default;
+      background-color: #f8f9fa;
+      width: 100%;
+      height: 5rem;
+
+      option {
+        background-color: #f8f9fa;
+        font-size: $font-small;
+        font-weight: 500;
+        color: #343a40;
+      }
+
+      &:invalid,
+      & option[value=""] {
+        color: #868e96;
+      }
+    }
+
+    select:focus {
+      outline: none;
+    }
+
+    .custom-arrow {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      background-color: #e9ecef;
+      box-shadow: 0 1px 0 #adb5bd;
+      width: 4rem;
+      height: 100%;
+    }
+
+    .custom-arrow::before,
+    .custom-arrow::after {
+      --size: 0.5rem;
+
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .custom-arrow::before {
+      border-left: var(--size) solid transparent;
+      border-right: var(--size) solid transparent;
+      border-bottom: var(--size) solid rgba(1, 42, 70, 0.54);
+
+      top: 41%;
+    }
+
+    .custom-arrow::after {
+      border-left: var(--size) solid transparent;
+      border-right: var(--size) solid transparent;
+      border-top: var(--size) solid rgba(1, 42, 70, 0.54);
+
+      top: 60%;
+    }
+  }
+}
+
+@mixin custom-toggle {
+  .toggle-box {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .custom-toggle {
+    display: inline-block;
+    cursor: pointer;
+
+    &__text {
+      font-size: $font-small;
+      color: #868e96;
+      font-weight: 400;
+    }
+
+    &__input {
+      display: none;
+    }
+
+    &__fill {
+      position: relative;
+      width: 4.8rem;
+      height: 2.4rem;
+      border-radius: 1.2rem;
+      background-color: #adb5bd;
+      transition: background 0.2s;
+    }
+
+    &__input:checked + &__fill {
+      background-color: #012a46;
+    }
+
+    &__fill::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2.4rem;
+      width: 2.4rem;
+      background-color: #fff;
+      box-shadow: 0 0 1rem rgb(0, 0, 0, 0.2);
+      border-radius: 1.2rem;
+
+      transition: transform 0.2s;
+    }
+
+    &__input:checked + &__fill::after {
+      transform: translateX(2.4rem);
+    }
+  }
+}
+
+// Mixin for the background gradient colors
+@mixin background-gradient($color-left, $color-right) {
+  background: $color-right; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    $color-left,
+    $color-right
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    $color-left,
+    $color-right
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+// Mixin for general reset styles
+@mixin reset-custom($title: false) {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-container {
+    padding: $space-m;
+    font-family: "Roboto", sans-serif;
+  }
+
+  @if $title {
+    .header-title {
+      margin-bottom: $space-m;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__text {
+        font-size: $font-medium-bigger;
+        color: black;
+        font-weight: 500;
+
+        &--bold {
+          color: $color-primary;
+        }
+      }
+
+      &__button {
+        border: none;
+        box-shadow: 0 0 1rem rgb(0, 0, 0, 0.2);
+        padding: $space-default
+          $space-default-bigger
+          $space-default
+          $space-default-bigger;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: $font-small;
+        color: #212529;
+
+        @include background-gradient(#ffffff, #ece9e6);
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+// Buttons components
+// Button common design
+@mixin button-design {
+  background: none;
+  border: 0;
+  box-shadow: 0 1rem 0.5rem rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  font-size: $font-small;
+  border-radius: 1rem;
+}
+
+// Medium primary button
+@mixin button-primary-md {
+  @include button-design;
+  @include background-gradient(
+    #243b55,
+    #141e30
+  ); // This is imported from _mixins.scss
+
+  // Default values
+  color: #fff;
+  padding: $space-default $space-m;
+}
+
+// Small secondary button
+@mixin button-secondary-sm {
+  @include button-design;
+  @include background-gradient(
+    #d3cce3,
+    #e9e4f0
+  ); // This is imported from _mixins.scss
+
+  // Default values
+  color: #343a40;
+  padding: $space-s $space-default;
+
+  // Overriding font weight
+  font-weight: 600;
+}

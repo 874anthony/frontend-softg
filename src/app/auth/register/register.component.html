@@ -1,0 +1,27 @@
+<section class="main-container">
+  <div class="form-box">
+    <p class="login-text">
+      &larr; Back to
+      <a class="login-text__link" [routerLink]="['/login']">Login</a>
+    </p>
+
+    <form [formGroup]="registrationForm">
+      <div class="user-input-wrap">
+        <input formControlName="name" type="text" required />
+        <label class="floating-placeholder">Name</label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="email" type="text" required />
+        <label class="floating-placeholder">Email</label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="password" type="password" required />
+        <label class="floating-placeholder">Password</label>
+      </div>
+
+      <button class="cta-register" type="submit">Create Account</button>
+    </form>
+  </div>
+</section>

@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [],
@@ -24,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
   ],
   exports: [
     MatInputModule,
@@ -35,6 +37,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
   ],
 })
 export class MaterialModule {}

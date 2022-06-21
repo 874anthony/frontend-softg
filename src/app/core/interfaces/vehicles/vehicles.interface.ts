@@ -12,4 +12,5 @@ export interface VehicleResponse {
   status: string;
   documents?: IVehicle[] | any;
   document?: IVehicle | any;
+  error?: any;
 }

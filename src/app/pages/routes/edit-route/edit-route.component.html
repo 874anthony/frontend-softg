@@ -1,0 +1,127 @@
+<section class="main-container">
+  <section class="header-title">
+    <h2 class="header-title__text">Editando vehiculo</h2>
+
+    <button (click)="deleteRoute()" class="header-title__button">
+      Eliminar
+    </button>
+  </section>
+
+  <section class="product-container">
+    <h3 class="title-description">Vehicle Information</h3>
+
+    <form [formGroup]="updateRouteForm" (ngSubmit)="updateRoute()">
+      <div class="product-info">
+        <div class="product-info__form">
+          <div class="user-input-wrap">
+            <input formControlName="description" type="text" required />
+            <label class="floating-placeholder">Descripcion</label>
+          </div>
+
+          <div class="product-info__form-grid">
+            <div class="user-input-wrap">
+              <input formControlName="driverId" type="text" required />
+              <label class="floating-placeholder">Conductor</label>
+            </div>
+
+            <div class="user-input-wrap">
+              <input formControlName="vehicleId" type="text" required />
+              <label class="floating-placeholder">Vehiculo</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-box">
+        <label class="custom-toggle" for="checkbox-update">
+          <input
+            (change)="updateVehicleDriver = !updateVehicleDriver"
+            class="custom-toggle__input"
+            type="checkbox"
+            id="checkbox-update"
+          />
+          <div class="custom-toggle__fill"></div>
+        </label>
+
+        <span class="custom-toggle__text"
+          >Actualizar conductor o vehiculo?</span
+        >
+      </div>
+
+      <br *ngIf="updateVehicleDriver" />
+      <br *ngIf="updateVehicleDriver" />
+      <br *ngIf="updateVehicleDriver" />
+
+      <!-- For selecting an existing driver -->
+      <form *ngIf="updateVehicleDriver" class="d-flex">
+        <div class="product-info__form-grid">
+          <mat-form-field color="primary" appearance="outline">
+            <mat-label>Nombre del conductor</mat-label>
+            <input
+              matInput
+              [formControl]="driverNameCtrl"
+              [matAutocomplete]="auto"
+              placeholder="Search the driver name here..."
+              type="text"
+            />
+
+            <mat-autocomplete
+              (optionSelected)="fillDriver($event.option.value)"
+              #auto="matAutocomplete"
+              [displayWith]="displayDriverMat"
+            >
+              <mat-option
+                *ngFor="let driver of filteredDrivers | async"
+                [value]="driver"
+              >
+                <span> {{ driver.firstName }} {{ driver.lastName }} </span>
+                <span> - </span>
+                <span> {{ driver.city }} </span>
+                <span> - </span>
+                <span> {{ driver.ssn }} </span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <!-- For selecting an existing vehicle -->
+          <mat-form-field appearance="fill">
+            <mat-label>Marca del vehiculo</mat-label>
+            <input
+              matInput
+              [formControl]="vehicleMakeCtrl"
+              [matAutocomplete]="vehicleComplete"
+              placeholder="Search the vehicle make here..."
+              type="text"
+            />
+
+            <mat-autocomplete
+              (optionSelected)="fillVehicle($event.option.value)"
+              #vehicleComplete="matAutocomplete"
+              [displayWith]="displayVehicleMat"
+            >
+              <mat-option
+                *ngFor="let vehicle of filteredVehicles | async"
+                [value]="vehicle"
+              >
+                <span> {{ vehicle.make }} </span>
+                <span> - </span>
+                <span> {{ vehicle.year | date }} </span>
+                <span> - </span>
+                <span> {{ vehicle.description.slice(0, 50) + "..." }} </span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </form>
+
+      <div class="product-buttons">
+        <button type="submit" class="product-buttons__btn btn-save">
+          Guardar
+        </button>
+        <button type="button" (click)="onBack()" class="product-buttons__btn">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </section>
+</section>

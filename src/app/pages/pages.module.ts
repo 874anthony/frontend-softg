@@ -16,9 +16,12 @@ import { EditDriverComponent } from './drivers/edit-driver/edit-driver.component
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { AddVehicleComponent } from './vehicles/add-vehicle/add-vehicle.component';
 import { EditVehicleComponent } from './vehicles/edit-vehicle/edit-vehicle.component';
+import { RoutesComponent } from './routes/routes.component';
+import { AddRouteComponent } from './routes/add-route/add-route.component';
+import { EditRouteComponent } from './routes/edit-route/edit-route.component';
 
 @NgModule({
-  declarations: [DashboardComponent, DriversComponent, AddDriverComponent, EditDriverComponent, VehiclesComponent, AddVehicleComponent, EditVehicleComponent],
+  declarations: [DashboardComponent, DriversComponent, AddDriverComponent, EditDriverComponent, VehiclesComponent, AddVehicleComponent, EditVehicleComponent, RoutesComponent, AddRouteComponent, EditRouteComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

@@ -87,7 +87,7 @@ export class DriversComponent implements OnInit {
       .subscribe(({ documents }) => (this.dataSource = documents!));
   }
 
-  redirectToDriver(driver: any): any {
+  redirectToDriver(driver: IDriver): any {
     this.router.navigate(['/platform/drivers/edit', driver._id]);
   }
 }

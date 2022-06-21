@@ -1,0 +1,50 @@
+<section class="main-container">
+  <section class="header-title">
+    <h2 class="header-title__text">Editando vehiculo</h2>
+
+    <button (click)="deleteVehicle()" class="header-title__button">
+      Eliminar
+    </button>
+  </section>
+</section>
+
+<section class="product-container">
+  <h3 class="title-description">Vehicle Information</h3>
+
+  <form [formGroup]="updateVehicleForm" (ngSubmit)="updateVehicle()">
+    <div class="product-info">
+      <div class="product-info__form">
+        <div class="user-input-wrap">
+          <input formControlName="description" type="text" required />
+          <label class="floating-placeholder">Descripcion</label>
+        </div>
+
+        <div class="product-info__form-grid">
+          <div class="user-input-wrap">
+            <input formControlName="year" type="text" required />
+            <label class="floating-placeholder">A&#241;o</label>
+          </div>
+
+          <div class="user-input-wrap">
+            <input formControlName="make" type="text" required />
+            <label class="floating-placeholder">Marca</label>
+          </div>
+        </div>
+
+        <div class="user-input-wrap">
+          <input formControlName="capacity" type="text" required />
+          <label class="floating-placeholder">Capacidad</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-buttons">
+      <button type="submit" class="product-buttons__btn btn-save">
+        Guardar
+      </button>
+      <button type="button" (click)="onBack()" class="product-buttons__btn">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</section>

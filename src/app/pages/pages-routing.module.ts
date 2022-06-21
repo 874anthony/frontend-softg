@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { EditDriverComponent } from './drivers/edit-driver/edit-driver.component';
+import { EditVehicleComponent } from './vehicles/edit-vehicle/edit-vehicle.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
 
 const routes: Routes = [
   {
@@ -12,7 +14,6 @@ const routes: Routes = [
     component: DashboardComponent,
 
     children: [
-      // ================== Drivers starts here ==================
       {
         path: 'drivers',
         component: DriversComponent,
@@ -21,7 +22,15 @@ const routes: Routes = [
         path: 'drivers/edit/:id',
         component: EditDriverComponent,
       },
-      // ================== Drivers Ends here ==================
+
+      {
+        path: 'vehicles',
+        component: VehiclesComponent,
+      },
+      {
+        path: 'vehicles/edit/:id',
+        component: EditVehicleComponent,
+      },
       {
         path: '**',
         redirectTo: 'drivers',

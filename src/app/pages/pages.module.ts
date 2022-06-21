@@ -13,9 +13,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { AddDriverComponent } from './drivers/add-driver/add-driver.component';
 import { EditDriverComponent } from './drivers/edit-driver/edit-driver.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
+import { AddVehicleComponent } from './vehicles/add-vehicle/add-vehicle.component';
+import { EditVehicleComponent } from './vehicles/edit-vehicle/edit-vehicle.component';
 
 @NgModule({
-  declarations: [DashboardComponent, DriversComponent, AddDriverComponent, EditDriverComponent],
+  declarations: [DashboardComponent, DriversComponent, AddDriverComponent, EditDriverComponent, VehiclesComponent, AddVehicleComponent, EditVehicleComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

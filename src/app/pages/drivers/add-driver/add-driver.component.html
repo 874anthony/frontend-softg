@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>
+  <span> Add a new driver </span>
+</h2>
+
+<form [formGroup]="createDriverForm">
+  <mat-dialog-content>
+    <div class="input-box">
+      <h3 class="input-box__title">Driver Information</h3>
+
+      <div class="user-input-wrap">
+        <input formControlName="firstName" type="text" required />
+        <label class="floating-placeholder"> Nombre </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="lastName" type="text" required />
+        <label class="floating-placeholder"> Apellido </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="ssn" type="text" required />
+        <label class="floating-placeholder"> SSN </label>
+      </div>
+
+      <!-- Calendar / Fecha de nacimiento -->
+      <div class="user-input-wrap">
+        <!-- placeholder="Please select a date" -->
+        <input
+          formControlName="dob"
+          type="text"
+          onfocus="(this.type='date')"
+          onblur="(this.type='text')"
+          min="1990-01-01"
+          max="2100-01-01"
+          required
+        />
+        <label class="floating-placeholder">Fecha de nacimiento</label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="address" type="text" required />
+        <label class="floating-placeholder"> Direccion </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="city" type="text" required />
+        <label class="floating-placeholder"> Ciudad </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="zip" type="text" required />
+        <label class="floating-placeholder"> ZIP </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="phone" type="text" required />
+        <label class="floating-placeholder"> Telefono </label>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cerrar</button>
+    <button mat-raised-button (click)="createDriver()" color="primary">
+      Guardar
+    </button>
+  </mat-dialog-actions>
+</form>

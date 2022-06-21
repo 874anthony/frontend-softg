@@ -22,6 +22,19 @@
   padding: $space-default $space-m;
 }
 
+// Medium primary button
+@mixin button-primary-indigo {
+  @include button-design;
+  @include background-gradient(
+    #c2185b,
+    #731038
+  ); // This is imported from _mixins.scss
+
+  // Default values
+  color: #fff;
+  padding: $space-default $space-m;
+}
+
 // Small secondary button
 @mixin button-secondary-sm {
   @include button-design;

@@ -1,0 +1,106 @@
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+@import "../../../scss/components/buttons";
+
+.main-container {
+  width: 100%;
+  padding: 3.2rem;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.6rem;
+  margin-bottom: 3.2rem;
+
+  .cta-add {
+    @include button-primary-indigo;
+    font-weight: 700;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .main-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: grey;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+}
+
+// Angular table
+
+.table-design {
+  width: 100%;
+  padding: 1.6rem;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+  cursor: pointer;
+}
+
+.row-is-clicked {
+  font-weight: bold;
+}
+
+// This is for the dialogs
+.custom-dialog-styles {
+  .mat-button {
+    background: #ece9e6; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #ffffff,
+      #ece9e6
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #ffffff,
+      #ece9e6
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #141e30;
+    font-weight: 700;
+    box-shadow: 0 0 2rem rgb(0, 0, 0, 0.2);
+  }
+
+  .mat-dialog-title span {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .mat-dialog-title::before {
+    background: #141e30; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #243b55,
+      #141e30
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #243b55,
+      #141e30
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .mat-raised-button {
+    background: #141e30; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #243b55,
+      #141e30
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #243b55,
+      #141e30
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+    font-weight: 700;
+  }
+}

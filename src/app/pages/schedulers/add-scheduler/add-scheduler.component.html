@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>
+  <span> Add a new scheduler </span>
+</h2>
+
+<!-- For selecting an existing route -->
+<form class="d-flex">
+  <mat-form-field appearance="fill">
+    <mat-label>Ruta</mat-label>
+    <input
+      matInput
+      [formControl]="routeCtrl"
+      [matAutocomplete]="auto"
+      placeholder="Search the route here..."
+      type="text"
+    />
+
+    <mat-autocomplete
+      (optionSelected)="fillRoutes($event.option.value)"
+      #auto="matAutocomplete"
+      [displayWith]="displayRouteMat"
+    >
+      <mat-option *ngFor="let route of filteredRoutes | async" [value]="route">
+        <span> {{ route.description }} </span>
+        <span> - </span>
+        <span> {{ route.createdAt.split("T")[0] }} </span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<form [formGroup]="createSchedulerForm">
+  <mat-dialog-content>
+    <div class="input-box">
+      <h3 class="input-box__title">Scheduler Information</h3>
+
+      <div class="user-input-wrap">
+        <input formControlName="weekNum" type="text" required />
+        <label class="floating-placeholder"> Numero de semana </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="from" type="text" required />
+        <label class="floating-placeholder"> Desde </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="to" type="text" required />
+        <label class="floating-placeholder"> Hasta </label>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cerrar</button>
+    <button mat-raised-button (click)="createScheduler()" color="primary">
+      Guardar
+    </button>
+  </mat-dialog-actions>
+</form>

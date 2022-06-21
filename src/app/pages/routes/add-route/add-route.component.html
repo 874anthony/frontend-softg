@@ -1,0 +1,83 @@
+<h2 mat-dialog-title>
+  <span> Add a new route </span>
+</h2>
+
+<!-- For selecting an existing driver -->
+<form class="d-flex">
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre del conductor</mat-label>
+    <input
+      matInput
+      [formControl]="driverNameCtrl"
+      [matAutocomplete]="auto"
+      placeholder="Search the driver name here..."
+      type="text"
+    />
+
+    <mat-autocomplete
+      (optionSelected)="fillDriver($event.option.value)"
+      #auto="matAutocomplete"
+      [displayWith]="displayDriverMat"
+    >
+      <mat-option
+        *ngFor="let driver of filteredDrivers | async"
+        [value]="driver"
+      >
+        <span> {{ driver.firstName }} {{ driver.lastName }} </span>
+        <span> - </span>
+        <span> {{ driver.city }} </span>
+        <span> - </span>
+        <span> {{ driver.ssn }} </span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <!-- For selecting an existing vehicle -->
+  <mat-form-field appearance="fill">
+    <mat-label>Marca del vehiculo</mat-label>
+    <input
+      matInput
+      [formControl]="vehicleMakeCtrl"
+      [matAutocomplete]="vehicleComplete"
+      placeholder="Search the vehicle make here..."
+      type="text"
+    />
+
+    <mat-autocomplete
+      (optionSelected)="fillVehicle($event.option.value)"
+      #vehicleComplete="matAutocomplete"
+      [displayWith]="displayVehicleMat"
+    >
+      <mat-option
+        *ngFor="let vehicle of filteredVehicles | async"
+        [value]="vehicle"
+      >
+        <span> {{ vehicle.make }} </span>
+        <span> - </span>
+        <span> {{ vehicle.year | date }} </span>
+        <span> - </span>
+        <span> {{ vehicle.description.slice(0, 50) + "..." }} </span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<form [formGroup]="createRouteForm">
+  <mat-dialog-content>
+    <div class="input-box">
+      <h3 class="input-box__title">Route Information</h3>
+
+      <div class="user-input-wrap">
+        <input formControlName="description" type="text" required />
+        <label class="floating-placeholder"> Descripcion </label>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cerrar</button>
+    <button mat-raised-button (click)="createRoute()" color="primary">
+      Guardar
+    </button>
+  </mat-dialog-actions>
+</form>

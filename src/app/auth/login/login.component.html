@@ -1,1 +1,22 @@
-<p>login works!</p>
+<section class="main-container">
+  <div class="form-box">
+    <p class="login-text">
+      New account? Register
+      <a class="login-text__link" [routerLink]="['/register']">here</a> &rarr;
+    </p>
+
+    <form [formGroup]="userForm" (ngSubmit)="logIn()">
+      <div class="user-input-wrap">
+        <input formControlName="email" type="text" required />
+        <label class="floating-placeholder">Email</label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="password" type="password" required />
+        <label class="floating-placeholder">Password</label>
+      </div>
+
+      <button class="cta-register" type="submit">Log In</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <button
+    type="button"
+    mat-button
+    class="toolbar-button"
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="spacer"></span>
+  <p>{{ username }}</p>
+  <span class="spacer"></span>
+  <button (click)="logout()" mat-button class="toolbar-button">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <router-outlet></router-outlet>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="flex">
+      <a
+        *ngFor="let page of pages"
+        class="drawer-links"
+        [routerLink]="page.link"
+      >
+        {{ page.title }}
+      </a>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>

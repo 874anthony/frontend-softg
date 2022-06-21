@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>
+  <span> Add a new vehicle </span>
+</h2>
+
+<form [formGroup]="createVehicleForm">
+  <mat-dialog-content>
+    <div class="input-box">
+      <h3 class="input-box__title">Vehicle Information</h3>
+
+      <div class="user-input-wrap">
+        <input formControlName="description" type="text" required />
+        <label class="floating-placeholder"> Descripcion </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="year" type="text" required />
+        <label class="floating-placeholder"> A&#241;o </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="make" type="text" required />
+        <label class="floating-placeholder"> Marca </label>
+      </div>
+
+      <div class="user-input-wrap">
+        <input formControlName="capacity" type="text" required />
+        <label class="floating-placeholder"> Capacidad </label>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cerrar</button>
+    <button mat-raised-button (click)="createVehicle()" color="primary">
+      Guardar
+    </button>
+  </mat-dialog-actions>
+</form>

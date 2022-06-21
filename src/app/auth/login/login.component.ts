@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 // Services
 import { AuthService } from 'src/app/core/services/auth/auth.service';
@@ -12,7 +13,11 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class LoginComponent implements OnInit {
   public userForm!: FormGroup;
 
-  constructor(private _fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private _fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.userForm = this.createUserForm();
@@ -31,6 +36,10 @@ export class LoginComponent implements OnInit {
 
   logIn() {
     // TODO: Redirect when login is successful
-    this.authService.logIn(this.formValues).subscribe(console.log);
+    this.authService.logIn(this.formValues).subscribe((response) => {
+      if (response.status) {
+        this.router.navigate(['/platform/dashboard']);
+      }
+    });
   }
 }

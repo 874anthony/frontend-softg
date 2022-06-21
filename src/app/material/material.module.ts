@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatInputModule,
@@ -32,6 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}

@@ -1,0 +1,168 @@
+<section class="main-container">
+  <section class="header-title">
+    <h2 class="header-title__text">
+      Editando al conductor: <strong> {{ driverName }} </strong>
+    </h2>
+
+    <button (click)="deleteDriver()" class="header-title__button">
+      Eliminar
+    </button>
+  </section>
+</section>
+
+<section class="product-container">
+  <h3 class="title-description">Driver Information</h3>
+
+  <form [formGroup]="updateDriverForm" (ngSubmit)="updateDriver()">
+    <div class="product-info">
+      <div class="product-info__form">
+        <div class="user-input-wrap">
+          <input formControlName="firstName" type="text" required />
+          <label class="floating-placeholder">Nombre</label>
+        </div>
+
+        <div class="product-info__form-grid">
+          <div class="user-input-wrap">
+            <input formControlName="lastName" type="text" required />
+            <label class="floating-placeholder">Apellido</label>
+          </div>
+
+          <div class="product-info__form-grid--item">
+            <div class="user-input-wrap">
+              <input formControlName="ssn" type="text" required />
+              <label class="floating-placeholder">SSN</label>
+            </div>
+
+            <!-- Calendar / Fecha de nacimiento -->
+            <div class="user-input-wrap">
+              <!-- placeholder="Please select a date" -->
+              <input
+                type="text"
+                formControlName="dob"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')"
+                min="1990-01-01"
+                max="2100-01-01"
+                required
+              />
+              <label class="floating-placeholder">Fecha de nacimiento</label>
+            </div>
+          </div>
+          <div class="user-input-wrap">
+            <input formControlName="address" type="text" required />
+            <label class="floating-placeholder">Direccion</label>
+          </div>
+          <div class="user-input-wrap">
+            <input formControlName="city" type="text" required />
+            <label class="floating-placeholder">Ciudad</label>
+          </div>
+
+          <div class="user-input-wrap">
+            <input formControlName="zip" type="text" required />
+            <label class="floating-placeholder">ZIP</label>
+          </div>
+
+          <div class="user-input-wrap">
+            <input formControlName="phone" type="text" required />
+            <label class="floating-placeholder">Telefono</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 
+    <h3 class="title-description">Category Information</h3>
+
+    <div class="product-info__form">
+      <div class="product-info__form-grid--item-3">
+        <div class="custom-select">
+          <select required>
+            <option value="">Select the treatment type</option>
+            <option
+              *ngFor="let treatment of ['treatment1']"
+              [value]="treatment"
+            >
+              {{ treatment }}
+            </option>
+          </select>
+          <span class="custom-arrow"></span>
+        </div>
+
+        <div class="custom-select">
+          <select required>
+            <option value="">Select gender</option>
+            <option value="0">Unisex</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+          </select>
+          <span class="custom-arrow"></span>
+        </div>
+
+        <div class="custom-select">
+          <select required>
+            <option value="">Select the category</option>
+            <option
+              *ngFor="let category of ['category1', 'category2', 'category3']"
+              [value]="category"
+            >
+              {{ category }}
+            </option>
+          </select>
+          <span class="custom-arrow"></span>
+        </div>
+      </div>
+
+      <div class="user-input-wrap">
+        <input type="text" required />
+        <label class="floating-placeholder">Strength</label>
+      </div> -->
+
+    <!-- SWITCH DIV TO MAKE IT SIDE BY SIDE -->
+    <!-- <div class="switch-div">
+        <div class="toggle-box">
+          <label class="custom-toggle" for="checkbox-notification">
+            
+            <input
+              (change)="(true)"
+              class="custom-toggle__input"
+              type="checkbox"
+              id="checkbox-notification"
+            />
+            <div class="custom-toggle__fill"></div>
+          </label>
+
+          <span class="custom-toggle__text">Notification send?</span>
+        </div>
+
+        <div class="toggle-box">
+          <label class="custom-toggle" for="checkbox-rxproduct">
+            <input
+              class="custom-toggle__input"
+              type="checkbox"
+              id="checkbox-rxproduct"
+            />
+            <div class="custom-toggle__fill"></div>
+          </label>
+
+          <span class="custom-toggle__text">Is 10RX product?</span>
+        </div>
+      </div>
+       SWITCH DIVS END HERE -->
+
+    <!-- NOTIFICATION EXTRA INPUT -->
+    <!-- <div *ngIf="true" class="user-input-wrap"> -->
+    <!-- <input type="text" required /> -->
+    <!-- <label class="floating-placeholder">Supply limit</label> -->
+    <!-- </div> -->
+    <!-- NOTIFICATION EXTRA INPUT -->
+    <!-- </div>  -->
+
+    <div class="product-buttons">
+      <button type="submit" class="product-buttons__btn btn-save">
+        Guardar
+      </button>
+      <button type="button" (click)="onBack()" class="product-buttons__btn">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</section>

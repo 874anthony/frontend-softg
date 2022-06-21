@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { IDriver } from 'src/app/core/interfaces/drivers/drivers.interface';
 import { DriversService } from 'src/app/core/services/drivers/drivers.service';
 import { AddDriverComponent } from './add-driver/add-driver.component';
@@ -56,28 +57,37 @@ export class DriversComponent implements OnInit {
   // Angular Material Data
   public displayedColumns = this.columns.map((c) => c.columnDef);
   public dataSource: IDriver[] = [];
-  public clickedRows = new Set<any>();
 
   constructor(
     private driversService: DriversService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.driversService
-      .getAllDrivers()
-      .subscribe(({ documents }) => (this.dataSource = documents));
+    this.getDrivers();
   }
 
   addNewDriver(): void {
-    this.dialog.open(AddDriverComponent, {
+    const addDriverRef = this.dialog.open(AddDriverComponent, {
       restoreFocus: false,
       panelClass: 'custom-dialog-styles',
     });
+
+    addDriverRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getDrivers();
+      }
+    });
+  }
+
+  getDrivers(): void {
+    this.driversService
+      .getAllDrivers()
+      .subscribe(({ documents }) => (this.dataSource = documents!));
   }
 
   redirectToDriver(driver: any): any {
-    console.log(driver);
-    this.clickedRows.add(driver);
+    this.router.navigate(['/platform/drivers/edit', driver._id]);
   }
 }

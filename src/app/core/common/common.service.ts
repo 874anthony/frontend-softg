@@ -13,7 +13,7 @@ export class CommonService {
     return this.http.get<any>(`${environment.apiURL}/${url}`);
   }
 
-  getById(url: string, id: number): Observable<any> {
+  getById(url: string, id: string | number): Observable<any> {
     return this.http.get<any>(`${environment.apiURL}/${url}/${id}`);
   }
 
@@ -21,11 +21,11 @@ export class CommonService {
     return this.http.post<any>(`${environment.apiURL}/${url}`, data);
   }
 
-  put(url: string, data: any): Observable<any> {
-    return this.http.put<any>(`${environment.apiURL}/${url}`, data);
+  put(url: string, id: string | number, data: any): Observable<any> {
+    return this.http.put<any>(`${environment.apiURL}/${url}/${id}`, data);
   }
 
-  deleteById(url: string, id: number): Observable<any> {
+  deleteById(url: string, id: string | number): Observable<any> {
     return this.http.delete<any>(`${environment.apiURL}/${url}/${id}`);
   }
 }

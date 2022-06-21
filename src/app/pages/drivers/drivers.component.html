@@ -25,7 +25,6 @@
     <tr
       mat-row
       (click)="redirectToDriver(row)"
-      [class.row-is-clicked]="clickedRows.has(row)"
       *matRowDef="let row; columns: displayedColumns"
     ></tr>
   </table>

@@ -14,5 +14,6 @@ export interface IDriver {
 
 export interface DriverResponse {
   status: string;
-  documents: IDriver[];
+  documents?: IDriver[] | any;
+  document?: IDriver | any;
 }

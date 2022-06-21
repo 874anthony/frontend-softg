@@ -16,11 +16,11 @@ export class AuthService {
 
   constructor(private commonService: CommonService) {}
 
-  createUser(data: UserDTO): Observable<UserDTO> {
+  createUser(data: UserDTO): Observable<any> {
     return this.commonService.post(this.createUserURL, data);
   }
 
-  logIn(data: UserDTO): Observable<UserDTO> {
+  logIn(data: UserDTO): Observable<any> {
     return this.commonService.post(this.logInURL, data);
   }
 }

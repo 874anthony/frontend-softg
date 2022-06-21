@@ -8,10 +8,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { RoutesComponent } from './routes/routes.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
+import { SchedulersComponent } from './schedulers/schedulers.component';
 
 import { EditDriverComponent } from './drivers/edit-driver/edit-driver.component';
 import { EditRouteComponent } from './routes/edit-route/edit-route.component';
 import { EditVehicleComponent } from './vehicles/edit-vehicle/edit-vehicle.component';
+import { EditSchedulerComponent } from './schedulers/edit-scheduler/edit-scheduler.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,14 @@ const routes: Routes = [
       {
         path: 'routes/edit/:id',
         component: EditRouteComponent,
+      },
+      {
+        path: 'schedulers',
+        component: SchedulersComponent,
+      },
+      {
+        path: 'schedulers/edit/:id',
+        component: EditSchedulerComponent,
       },
       {
         path: '**',

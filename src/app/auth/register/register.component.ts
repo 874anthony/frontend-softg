@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 // Services
 import { AuthService } from 'src/app/core/services/auth/auth.service';
@@ -12,7 +13,11 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class RegisterComponent implements OnInit {
   public registrationForm!: FormGroup;
 
-  constructor(private _fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private _fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registrationForm = this.createRegistrationForm();
@@ -31,7 +36,11 @@ export class RegisterComponent implements OnInit {
   }
 
   createUser() {
-    // TODO: Redirect to dashboard page
-    this.authService.createUser(this.formValues).subscribe(console.log);
+    this.authService.createUser(this.formValues).subscribe((response) => {
+      if (response.status) {
+        this.authService.userInfo.next(response.role);
+        this.router.navigate(['/platform/dashboard']);
+      }
+    });
   }
 }

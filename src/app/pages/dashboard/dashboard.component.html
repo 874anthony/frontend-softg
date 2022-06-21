@@ -9,7 +9,9 @@
   </button>
 
   <span class="spacer"></span>
-  <button mat-button class="toolbar-button">
+  <p>{{ username }}</p>
+  <span class="spacer"></span>
+  <button (click)="logout()" mat-button class="toolbar-button">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>

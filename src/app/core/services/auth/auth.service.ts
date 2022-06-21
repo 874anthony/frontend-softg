@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 // Services
 import { CommonService } from '../../common/common.service';
@@ -13,6 +13,8 @@ import { UserDTO } from '../../interfaces/auth/create-user.interface';
 export class AuthService {
   private createUserURL = 'auth/create-user';
   private logInURL = 'auth/login';
+
+  public userInfo: BehaviorSubject<any> = new BehaviorSubject({});
 
   constructor(private commonService: CommonService) {}
 

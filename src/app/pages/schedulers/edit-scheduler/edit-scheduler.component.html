@@ -1,0 +1,100 @@
+<section class="main-container">
+  <section class="header-title">
+    <h2 class="header-title__text">Editando Scheduler</h2>
+
+    <button (click)="deleteScheduler()" class="header-title__button">
+      Eliminar
+    </button>
+  </section>
+
+  <section class="product-container">
+    <h3 class="title-description">Scheduler Information</h3>
+
+    <form [formGroup]="updateSchedulerForm" (ngSubmit)="updateScheduler()">
+      <div class="product-info">
+        <div class="product-info__form">
+          <div class="user-input-wrap">
+            <input formControlName="weekNum" type="text" required />
+            <label class="floating-placeholder">Numero de semana</label>
+          </div>
+
+          <div class="product-info__form-grid">
+            <div class="user-input-wrap">
+              <input formControlName="from" type="text" required />
+              <label class="floating-placeholder">Desde</label>
+            </div>
+
+            <div class="user-input-wrap">
+              <input formControlName="to" type="text" required />
+              <label class="floating-placeholder">Hasta</label>
+            </div>
+          </div>
+
+          <div class="user-input-wrap">
+            <input formControlName="routeId" type="text" required />
+            <label class="floating-placeholder">Ruta</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-box">
+        <label class="custom-toggle" for="checkbox-update">
+          <input
+            (change)="updateRoute = !updateRoute"
+            class="custom-toggle__input"
+            type="checkbox"
+            id="checkbox-update"
+          />
+          <div class="custom-toggle__fill"></div>
+        </label>
+
+        <span class="custom-toggle__text">Actualizar ruta?</span>
+      </div>
+
+      <br *ngIf="updateRoute" />
+      <br *ngIf="updateRoute" />
+      <br *ngIf="updateRoute" />
+
+      <!-- For selecting an existing driver -->
+      <form *ngIf="updateRoute" class="d-flex">
+        <!-- For selecting an existing route -->
+        <form class="d-flex">
+          <mat-form-field appearance="fill">
+            <mat-label>Ruta</mat-label>
+            <input
+              matInput
+              [formControl]="routeCtrl"
+              [matAutocomplete]="auto"
+              placeholder="Search the route here..."
+              type="text"
+            />
+
+            <mat-autocomplete
+              (optionSelected)="fillRoutes($event.option.value)"
+              #auto="matAutocomplete"
+              [displayWith]="displayRouteMat"
+            >
+              <mat-option
+                *ngFor="let route of filteredRoutes | async"
+                [value]="route"
+              >
+                <span> {{ route.description }} </span>
+                <span> - </span>
+                <span> {{ route.createdAt.split("T")[0] }} </span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </form>
+
+      <div class="product-buttons">
+        <button type="submit" class="product-buttons__btn btn-save">
+          Guardar
+        </button>
+        <button type="button" (click)="onBack()" class="product-buttons__btn">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </section>
+</section>

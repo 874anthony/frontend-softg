@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  public username: string = '';
+
   // Pages of the app
   public pages: Array<{ title: string; link: string }> = [
     { title: 'Drivers', link: '/platform/drivers' },
@@ -14,7 +18,14 @@ export class DashboardComponent implements OnInit {
     { title: 'Scheduler', link: '/platform/schedulers' },
   ];
 
-  constructor() {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username = this.authService.userInfo.getValue();
+  }
+
+  logout(): void {
+    this.authService.userInfo.next({});
+    this.router.navigate(['/login']);
+  }
 }

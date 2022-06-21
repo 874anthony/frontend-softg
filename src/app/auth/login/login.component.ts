@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    // TODO: Redirect when login is successful
     this.authService.logIn(this.formValues).subscribe((response) => {
       if (response.status) {
+        this.authService.userInfo.next(response.roleType);
         this.router.navigate(['/platform/dashboard']);
       }
     });
